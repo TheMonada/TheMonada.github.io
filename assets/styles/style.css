@@ -9,6 +9,7 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    overflow: hidden;
 }
 
 .landing-page {
