@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>TheMonada.com</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="icon" href="./assets/images/logo.jpg">
+    <style>
+        html,
+        body,
+        pre,
+        code,
+        kbd,
+        samp {
+            font-family: "Press Start 2P";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="landing-page">
+        <div class="circle-container">
+            <div class="dotted-circle"></div>
+            <div class="gradient-circle"></div>
+            <div class="loading-circle"></div>
+            <img class="logo" src="./assets/images/logo.jpg" alt="Monada Docs">
+        </div>
+        <h1>TheMonada.com</h1>
+        <div class="buttons">
+            <span id="button_1">Workplace</span>
+            <span id="button_2">Docs</span>
+            <span id="button_3">Monkee</span>
+            <span id="button_4">???</span>
+            <span id="button_5">???</span>
+            <span id="button_6">???</span>
+        </div>
+    </div>
+    <script>
+        function showAlert() {
+            document.getElementById('d-alert').showModal();
+        }
+
+        for (let i = 1; i <= 6; i++) {
+            if (i === 5) {
+                continue;
+            }
+            document.getElementById(`button_${i}`).addEventListener('click', showAlert);
+        }
+
+        let counter = 0;
+        document.getElementById('button_5').addEventListener('click', gorFun => {
+            counter++;
+            if (counter === 3) {
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`button_${i}`).innerText = '???';
+                    if (i === 5) {
+                        document.getElementById(`button_${i}`).removeEventListener('click', gorFun);
+                    } else {
+                        document.getElementById(`button_${i}`).removeEventListener('click', showAlert);
+                    }
+                }
+                random = Math.floor(Math.random() * 6) + 1;
+                document.getElementById(`button_${random}`).addEventListener('click', () => {
+                    document.getElementById('secret').showModal();
+                });
+            }
+        });
+    </script>
+    <dialog id="d-alert" class="dialog-dark">
+        <h1 class="dialog-title">Stop right there Monkey!</h1>
+        <p class="dialog-description">This is a restricted area.</p>
+        <button class="close-button" onclick="document.getElementById('d-alert').close()">Monkee :(</button>
+    </dialog>
+    <dialog id="secret" class="dialog-dark">
+        <h1 class="dialog-title">Robots.txt says:</h1>
+        <p class="dialog-description">Disallow: /</p>
+        <button class="close-button" onclick="window.location.reload()">X</button>
+    </dialog>
+    <footer>
+        <p>© 2024 TheMonada.com. All rights reserved.</p>
+        <a href="https://github.com/TheMonada" target="_blank" class="github-link">
+            <img src="./assets/images/gitcat.png" alt="GitHub">
+        </a>
+    </footer>
+</body>
+
+</html>

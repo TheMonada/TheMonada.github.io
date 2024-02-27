@@ -1,0 +1,223 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000000, #333);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons span {
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px;
+    border: 2px dashed transparent;
+}
+
+.buttons span:hover {
+    border-color: #fff;
+    border-radius: 10px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background: #000;
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+}
+
+.github-link {
+    position: absolute;
+    right: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+footer img {
+    width: 30px;
+    height: 30px;
+}
+
+.dialog-dark {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    width: 50vw;
+    height: 30vh;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.dialog-title {
+    text-align: center;
+    font-size: 2em;
+}
+
+.dialog-description {
+    text-align: center;
+}
+
+.close-button {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .dialog-dark {
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .dialog-title {
+        font-size: 1.5em;
+    }
+
+    .close-button {
+        font-size: 25px;
+        padding: 15px;
+    }
+}
+
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dotted-circle {
+    position: relative;
+    border: 2px dashed #fff;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    animation: rotate 60s linear infinite;
+}
+
+.gradient-circle {
+    position: absolute;
+    border-radius: 50%;
+    width: 75%;
+    height: 75%;
+    background: radial-gradient(circle at center, #011826, #121212);
+    z-index: 0;
+}
+
+.loading-circle {
+    position: absolute;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    width: 75%;
+    height: 75%;
+    border-top-color: #5CE3F7;
+    border-right-color: #011826;
+    border-bottom-color: #121212;
+    border-left-color: #011826;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #000, #fff, #000); /* Cambia '#000' y '#fff' a los colores que desees para el degradado */
+    background-size: 200% auto;
+    animation: lineAnimation 2s linear infinite;
+    transform: rotate(315deg);
+}
+
+.line1 {
+    top: 10%;
+    left: -25%;
+    animation-delay: 0s;
+}
+
+.line2 {
+    top: 40%;
+    left: -20%;
+    animation-delay: 0.25s;
+}
+
+.line3 {
+    top: 60%;
+    left: 40%;
+    animation-delay: 0.7s;
+}
+
+@keyframes lineAnimation {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
