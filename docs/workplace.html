@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>TheMonada.com</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style-workplace.css">
+    <link rel="icon" href="./assets/images/logo.jpg">
+    <style>
+        html,
+        body,
+        pre,
+        code,
+        kbd,
+        samp {
+            font-family: "Press Start 2P";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="header">
+        <a href="./" class="logo-link">
+            <div class="logo-container">
+                <img class="logo-workspace" src="./assets/images/logo.jpg" alt="TheMonada.com">
+                TheMonada.com
+            </div>
+        </a>
+        <div class="navbar-container">
+            <div class="navbar">
+                <a href="./workplace">Workplace</a>
+                <a href="#repositories" class="disabled">Repositories</a>
+                <a href="#docs" class="disabled">Docs</a>
+            </div>
+        </div>
+    </div>
+    <div id="app" class="app">
+        <aside id="sidebar" class="sidebar">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <a href="#" class="collapse-button"><i class="fa-solid fa-bars"></i></a>
+            <div class="separator"></div>
+            <a id="toolbox-button" class="disabled"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
+            <div id="toolbox-dropdown" class="dropdown">
+                <a id="cyberchef-link">> CyberChef</a>
+                <a>> Option 2</a>
+                <a>> Option 3</a>
+            </div>
+            <a href="#pocs" id="pocs-button"><i class="fa-regular fa-window-restore"></i> PoCs</a>
+            <div id="pocs-dropdown" class="dropdown">
+                <a href="#option1">> Option 1</a>
+                <a href="#option2">> Option 2</a>
+                <a href="#option3">> Option 3</a>
+            </div>
+            <a href="#misc" id="misc-button"><i class="fa-solid fa-boxes-stacked"></i> Misc</a>
+            <div id="misc-dropdown" class="dropdown">
+                <a href="#option1">> Option 1</a>
+                <a href="#option2">> Option 2</a>
+                <a href="#option3">> Option 3</a>
+            </div>
+        </aside>
+        <div id="content" class="tool">
+            <iframe id="tool-content" src=""></iframe>
+        </div>
+    </div>
+    <script>
+        var button = document.getElementById('toolbox-button');
+        var dropdown = document.getElementById('toolbox-dropdown');
+        var link = document.getElementById('cyberchef-link');
+        var iframe = document.getElementById('tool-content');
+
+        button.addEventListener('click', function () {
+            var isHidden = dropdown.style.display === 'none';
+            dropdown.style.display = isHidden ? 'block' : 'none';
+        });
+
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('tool-content').src = 'https://gchq.github.io/CyberChef/#theme=dark';
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/34101942fe.js" crossorigin="anonymous"></script>
+    <footer>
+        <p>© 2024 TheMonada.com. All rights reserved.</p>
+        <a href="https://github.com/TheMonada" target="_blank" class="github-link">
+            <img src="./assets/images/gitcat.png" alt="GitHub">
+        </a>
+    </footer>
+</body>
+
+</html>

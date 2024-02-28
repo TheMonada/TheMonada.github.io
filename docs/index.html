@@ -48,11 +48,15 @@
         }
 
         for (let i = 1; i <= 6; i++) {
-            if (i === 5) {
+            if (i === 1 || i === 5) {
                 continue;
             }
             document.getElementById(`button_${i}`).addEventListener('click', showAlert);
         }
+
+        document.getElementById('button_1').addEventListener('click', () => {
+            window.location.href = './workplace';
+        });
 
         let counter = 0;
         document.getElementById('button_5').addEventListener('click', gorFun => {
