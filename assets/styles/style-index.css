@@ -1,0 +1,93 @@
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 20px;
+}
+
+.logo {
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons span {
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px;
+    border: 2px dashed transparent;
+}
+
+.buttons span:hover {
+    border-color: #fff;
+    border-radius: 10px;
+}
+
+.circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dotted-circle {
+    position: relative;
+    border: 2px dashed #fff;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    animation: rotate 60s linear infinite;
+}
+
+.gradient-circle {
+    position: absolute;
+    border-radius: 50%;
+    width: 75%;
+    height: 75%;
+    background: radial-gradient(circle at center, #011826, #121212);
+    z-index: 0;
+}
+
+.loading-circle {
+    position: absolute;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    width: 75%;
+    height: 75%;
+    border-top-color: #5CE3F7;
+    border-right-color: #011826;
+    border-bottom-color: #121212;
+    border-left-color: #011826;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
