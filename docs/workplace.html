@@ -46,45 +46,18 @@
             <div class="separator"></div>
             <a href="#" class="collapse-button"><i class="fa-solid fa-bars"></i></a>
             <div class="separator"></div>
-            <a id="toolbox-button" class="disabled"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
-            <div id="toolbox-dropdown" class="dropdown">
-                <a id="cyberchef-link">> CyberChef</a>
-                <a>> Option 2</a>
-                <a>> Option 3</a>
-            </div>
-            <a href="#pocs" id="pocs-button"><i class="fa-regular fa-window-restore"></i> PoCs</a>
-            <div id="pocs-dropdown" class="dropdown">
-                <a href="#option1">> Option 1</a>
-                <a href="#option2">> Option 2</a>
-                <a href="#option3">> Option 3</a>
-            </div>
-            <a href="#misc" id="misc-button"><i class="fa-solid fa-boxes-stacked"></i> Misc</a>
-            <div id="misc-dropdown" class="dropdown">
-                <a href="#option1">> Option 1</a>
-                <a href="#option2">> Option 2</a>
-                <a href="#option3">> Option 3</a>
-            </div>
+            <a id="toolbox-button"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
+            <div id="toolbox-dropdown" class="dropdown"></div>
+            <a id="pocs-button"><i class="fa-regular fa-window-restore"></i> PoCs</a>
+            <div id="pocs-dropdown" class="dropdown"></div>
+            <a id="misc-button"><i class="fa-solid fa-boxes-stacked"></i> Misc</a>
+            <div id="misc-dropdown" class="dropdown"></div>
         </aside>
         <div id="content" class="tool">
-            <iframe id="tool-content" src=""></iframe>
+            <iframe id="tool-content" src="" frameborder="0"></iframe>
         </div>
     </div>
-    <script>
-        var button = document.getElementById('toolbox-button');
-        var dropdown = document.getElementById('toolbox-dropdown');
-        var link = document.getElementById('cyberchef-link');
-        var iframe = document.getElementById('tool-content');
-
-        button.addEventListener('click', function () {
-            var isHidden = dropdown.style.display === 'none';
-            dropdown.style.display = isHidden ? 'block' : 'none';
-        });
-
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.getElementById('tool-content').src = 'https://gchq.github.io/CyberChef/#theme=dark';
-        });
-    </script>
+    <script src="assets/js/script-workplace.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/34101942fe.js" crossorigin="anonymous"></script>
     <footer>
         <p>© 2024 TheMonada.com. All rights reserved.</p>
