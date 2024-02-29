@@ -51,12 +51,14 @@ function addListeners() {
         dropdownPoC.style.display = 'none';
     });
 
+    const content = document.getElementById('content');
+
     for (const tool in tools) {
         dropdownToolbox.innerHTML += `<a id="${tools[tool].id}">${tools[tool].name}</a>`;
         const link = document.getElementById(tools[tool].id);
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            iframe.src = tools[tool].link;
+            content.innerHTML = `<iframe id="tool-content" src="${tools[tool].link}" frameborder="0"></iframe>`;
         });
     }
 
@@ -65,7 +67,7 @@ function addListeners() {
         const link = document.getElementById(enumPoCs[poc].id);
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            iframe.src = enumPoCs[poc].link;
+            content.innerHTML = `<iframe id="tool-content" src="${enumPoCs[poc].link}" frameborder="0"></iframe>`;
         });
     }
 
@@ -74,7 +76,7 @@ function addListeners() {
         const link = document.getElementById(enumMisc[misc].id);
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            iframe.src = enumMisc[misc].link;
+            content.innerHTML = `<iframe id="tool-content" src="${enumMisc[misc].link}" frameborder="0"></iframe>`;
         });
     }
 };
