@@ -46,7 +46,9 @@ buttonMisc.addEventListener('click', function () {
     dropdownPoC.style.display = 'none';
 });
 
-const content = document.getElementById('content');
+const content = document.getElementById('tab-content');
+
+const allTools = Object.assign({}, tools, enumPoCs, enumMisc);
 
 function createHandler(tool) {
     return function() {
@@ -54,51 +56,62 @@ function createHandler(tool) {
         for (let frame of frames) {
             frame.style.display = 'none';
         }
-        document.getElementById(tools[tool].frame).style.display = 'block';
+        document.getElementById(allTools[tool].frame).style.display = 'block';
     };
 }
 
-for (let tool in tools) {
+function createCloseHandler(tab, iframe) {
+    return function() {
+        tab.remove();
+        iframe.remove();
+    };
+}
+
+for (let tool in allTools) {
     let link = document.createElement('a');
     link.id = tools[tool].id;
     link.textContent = ` > ${tools[tool].name}`;
-    link.addEventListener('click', createHandler(tool));
-    dropdownToolbox.appendChild(link);
+    link.addEventListener('click', function() {
+        if (document.getElementById(tools[tool].frame)) {
+            createHandler(tool)();
+        } else {
+            let tab = document.createElement('div');
+            let tabLink = document.createElement('a');
+            tabLink.textContent = tools[tool].name;
+            let closeButton = document.createElement('a');
+            let closeIcon = document.createElement('i');
+            closeIcon.className = 'fa-regular fa-circle-xmark';
+            closeButton.appendChild(closeIcon);
+            let separator = document.createElement('div');
+            separator.className = 'separator';
+            tabLink.addEventListener('click', createHandler(tool));
+            tab.appendChild(tabLink);
+            tab.appendChild(closeButton);
+            tab.appendChild(separator);
+            document.getElementById('tabs').appendChild(tab);
 
-    let iframe = document.createElement('iframe');
-    iframe.id = tools[tool].frame;
-    iframe.src = tools[tool].link;
-    iframe.frameBorder = '0';
-    iframe.className = 'iframe';
-    content.appendChild(iframe);
+            let iframe = document.createElement('iframe');
+            iframe.id = tools[tool].frame;
+            iframe.src = tools[tool].link;
+            iframe.frameBorder = '0';
+            iframe.className = 'iframe';
+            document.getElementById('tab-content').appendChild(iframe);
+            closeButton.addEventListener('click', createCloseHandler(tab, iframe));
+            createHandler(tool)();
+        }
+    });
+    if (tool in tools) {
+        dropdownToolbox.appendChild(link);
+    } else if (tool in enumPoCs) {
+        dropdownPoC.appendChild(link);
+    } else {
+        dropdownMisc.appendChild(link);
+    }
 }
 
-for (let poc in enumPoCs) {
-    let link = document.createElement('a');
-    link.id = enumPoCs[poc].id;
-    link.textContent = ` > ${enumPoCs[poc].name}`;
-    link.addEventListener('click', createHandler(poc));
-    dropdownPoC.appendChild(link);
-
-    let iframe = document.createElement('iframe');
-    iframe.id = enumPoCs[poc].frame;
-    iframe.src = enumPoCs[poc].link;
-    iframe.frameBorder = '0';
-    iframe.className = 'iframe';
-    content.appendChild(iframe);
-}
-
-for (let misc in enumMisc) {
-    let link = document.createElement('a');
-    link.id = enumMisc[misc].id;
-    link.textContent = ` > ${enumMisc[misc].name}`;
-    link.addEventListener('click', createHandler(misc));
-    dropdownMisc.appendChild(link);
-
-    let iframe = document.createElement('iframe');
-    iframe.id = enumMisc[misc].frame;
-    iframe.src = enumMisc[misc].link;
-    iframe.frameBorder = '0';
-    iframe.className = 'iframe';
-    content.appendChild(iframe);
-}
+document.getElementById('scroll-left').addEventListener('click', function() {
+    document.getElementById('tabs').scrollLeft -= 100;
+});
+document.getElementById('scroll-right').addEventListener('click', function() {
+    document.getElementById('tabs').scrollLeft += 100;
+});
