@@ -5,6 +5,12 @@ const tools = {
         'frame': 'cyberchef-frame',
         'link': 'https://gchq.github.io/CyberChef/#theme=dark'
     },
+    'webcheck': {
+        'name': 'Webcheck',
+        'id': 'webcheck-link',
+        'frame': 'webcheck-frame',
+        'link': 'https://web-check.xyz/'
+    },
     'webhook': {
         'name': 'Webhook',
         'id': 'webhook-link',
