@@ -26,30 +26,36 @@ const enumMisc = { }
 const iframe = document.getElementById('tool-content');
 
 const buttonToolbox = document.getElementById('toolbox-button');
+const arrowToolbox = document.getElementById('toolbox-arrow');
 const dropdownToolbox = document.getElementById('toolbox-dropdown');
 
 const buttonPoC = document.getElementById('pocs-button');
+const arrowPoC = document.getElementById('pocs-arrow');
 const dropdownPoC = document.getElementById('pocs-dropdown');
 
 const buttonMisc = document.getElementById('misc-button');
+const arrowMisc = document.getElementById('misc-arrow');
 const dropdownMisc = document.getElementById('misc-dropdown');
 
 buttonToolbox.addEventListener('click', function () {
     dropdownToolbox.style.display = (dropdownToolbox.style.display === 'none') ? 'block' : 'none';
     dropdownPoC.style.display = 'none';
     dropdownMisc.style.display = 'none';
+    arrowToolbox.className = (arrowToolbox.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
 });
 
 buttonPoC.addEventListener('click', function () {
     dropdownPoC.style.display = (dropdownPoC.style.display === 'none') ? 'block' : 'none';
     dropdownToolbox.style.display = 'none';
     dropdownMisc.style.display = 'none';
+    arrowPoC.className = (arrowPoC.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
 });
 
 buttonMisc.addEventListener('click', function () {
     dropdownMisc.style.display = (dropdownMisc.style.display === 'none') ? 'block' : 'none';
     dropdownToolbox.style.display = 'none';
     dropdownPoC.style.display = 'none';
+    arrowMisc.className = (arrowMisc.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
 });
 
 const content = document.getElementById('tab-content');
@@ -76,7 +82,7 @@ function createCloseHandler(tab, iframe) {
 for (let tool in allTools) {
     let link = document.createElement('a');
     link.id = tools[tool].id;
-    link.textContent = ` > ${tools[tool].name}`;
+    link.textContent = ` • ${tools[tool].name}`;
     link.addEventListener('click', function() {
         if (document.getElementById(tools[tool].frame)) {
             createHandler(tool)();

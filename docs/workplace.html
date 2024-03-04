@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>TheMonada.com</title>
     <link rel="stylesheet" href="assets/styles/style.css">
@@ -47,12 +46,12 @@
             <div class="separator"></div>
             <a href="#" class="collapse-button"><i class="fa-solid fa-bars"></i></a>
             <div class="separator"></div>
-            <a id="toolbox-button"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
-            <div id="toolbox-dropdown" class="dropdown"></div>
-            <a id="pocs-button"><i class="fa-regular fa-window-restore"></i> PoCs</a>
-            <div id="pocs-dropdown" class="dropdown"></div>
-            <a id="misc-button"><i class="fa-solid fa-boxes-stacked"></i> Misc</a>
-            <div id="misc-dropdown" class="dropdown"></div>
+            <a id="toolbox-button"><i class="fa-solid fa-toolbox"></i> Toolbox <i id="toolbox-arrow" class="fa-solid fa-chevron-right"></i></a>
+            <div id="toolbox-dropdown" style="display: none;"></div>
+            <a id="pocs-button"><i class="fa-regular fa-window-restore"></i> PoCs <i id="pocs-arrow" class="fa-solid fa-chevron-right"></i></a>
+            <div id="pocs-dropdown" style="display: none;"></div>
+            <a id="misc-button"><i class="fa-solid fa-boxes-stacked"></i> Misc <i id="misc-arrow" class="fa-solid fa-chevron-right"></i></a>
+            <div id="misc-dropdown" style="display: none;"></div>
         </aside>
         <div id="content" class="tool">
             <div id="tab-container">
