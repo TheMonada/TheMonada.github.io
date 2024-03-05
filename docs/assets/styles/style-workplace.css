@@ -89,11 +89,12 @@
     background-color: #333;
 }
 
-.dropdown {
-    display: none;
+.sidebar.collapsed {
+    width: 50px;
 }
 
-#collapse-button {
+.sidebar.collapsed span {
+    display: none;
 }
 
 #content {
