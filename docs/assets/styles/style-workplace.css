@@ -89,7 +89,12 @@
     background-color: #333;
 }
 
-#collapse-button {
+.sidebar.collapsed {
+    width: 50px;
+}
+
+.sidebar.collapsed span {
+    display: none;
 }
 
 #content {
