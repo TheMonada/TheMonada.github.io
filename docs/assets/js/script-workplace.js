@@ -30,8 +30,6 @@ function createCloseHandler(tab, iframe) {
 
     const allTools = Object.assign({}, tools, enumPoCs, enumMisc);
 
-    const iframe = document.getElementById('tool-content');  
-
     const buttonToolbox = document.getElementById('toolbox-button');
     const arrowToolbox = document.getElementById('toolbox-arrow');
     const dropdownToolbox = document.getElementById('toolbox-dropdown');
@@ -140,5 +138,31 @@ function createCloseHandler(tab, iframe) {
         arrowPoC.className = 'fa-solid fa-chevron-right';
         arrowMisc.className = 'fa-solid fa-chevron-right';
         document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    document.getElementById('capture-button').addEventListener('click', async function() {
+        try {
+            const mediaStream = await navigator.mediaDevices.getDisplayMedia({video: true});
+            const track = mediaStream.getVideoTracks()[0];
+            const imageCapture = new ImageCapture(track)
+            const bitmap = await imageCapture.grabFrame();
+            const canvas = document.createElement('canvas');
+            canvas.width = bitmap.width;
+            canvas.height = bitmap.height;
+            const context = canvas.getContext('2d');
+            context.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height);
+            const imgData = canvas.toDataURL('image/png');
+            
+            const a = document.createElement('a');
+            a.href = imgData;
+            a.download = 'screenshot.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            track.stop();
+        } catch(err) {
+            console.error("Error: " + err);
+        }
     });
 })();
