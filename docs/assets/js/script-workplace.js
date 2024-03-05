@@ -50,6 +50,8 @@ function createCloseHandler(tab, iframe) {
             dropdownPoC.style.display = 'none';
             dropdownMisc.style.display = 'none';
             arrowToolbox.className = (arrowToolbox.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
+            arrowPoC.className = 'fa-solid fa-chevron-right';
+            arrowMisc.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }        
@@ -61,6 +63,8 @@ function createCloseHandler(tab, iframe) {
             dropdownToolbox.style.display = 'none';
             dropdownMisc.style.display = 'none';
             arrowPoC.className = (arrowPoC.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
+            arrowToolbox.className = 'fa-solid fa-chevron-right';
+            arrowMisc.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }
@@ -72,6 +76,8 @@ function createCloseHandler(tab, iframe) {
             dropdownToolbox.style.display = 'none';
             dropdownPoC.style.display = 'none';
             arrowMisc.className = (arrowMisc.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
+            arrowToolbox.className = 'fa-solid fa-chevron-right';
+            arrowPoC.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }

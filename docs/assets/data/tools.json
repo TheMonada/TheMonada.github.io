@@ -1,9 +1,21 @@
 {
+    "csp-eval": {
+        "name": "CSP Eval",
+        "id": "csp-eval-link",
+        "frame": "csp-eval-frame",
+        "link": "https://csp-evaluator.withgoogle.com/"
+    },
     "cyberchef": {
         "name": "CyberChef",
         "id": "cyberchef-link",
         "frame": "cyberchef-frame",
         "link": "https://gchq.github.io/CyberChef/#theme=dark"
+    },
+    "virusTotal": {
+        "name": "VirusTotal",
+        "id": "virusTotal-link",
+        "frame": "virusTotal-frame",
+        "link": "https://www.virustotal.com/gui/home/upload"
     },
     "webcheck": {
         "name": "Webcheck",
