@@ -26,9 +26,9 @@ function createCloseHandler(tab, iframe) {
 }
 
 (async function() {
-    const { tools, enumPoCs, enumMisc } = await fetchTools();
+    const fetchedTools = await fetchTools();
 
-    const allTools = Object.assign({}, tools, enumPoCs, enumMisc);
+    const allTools = Object.assign({}, fetchedTools.tools, fetchedTools.pocs, fetchedTools.misc);
 
     const buttonToolbox = document.getElementById('toolbox-button');
     const arrowToolbox = document.getElementById('toolbox-arrow');
@@ -83,15 +83,15 @@ function createCloseHandler(tab, iframe) {
 
     for (let tool in allTools) {
         let link = document.createElement('a');
-        link.id = tools[tool].id;
-        link.textContent = ` • ${tools[tool].name}`;
+        link.id = allTools[tool].id;
+        link.textContent = ` • ${allTools[tool].name}`;
         link.addEventListener('click', function() {
-            if (document.getElementById(tools[tool].frame)) {
+            if (document.getElementById(allTools[tool].frame)) {
                 createHandler(tool, allTools)();
             } else {
                 let tab = document.createElement('div');
                 let tabLink = document.createElement('a');
-                tabLink.textContent = tools[tool].name;
+                tabLink.textContent = allTools[tool].name;
                 let closeButton = document.createElement('a');
                 let closeIcon = document.createElement('i');
                 closeIcon.className = 'fa-regular fa-circle-xmark';
@@ -105,8 +105,8 @@ function createCloseHandler(tab, iframe) {
                 document.getElementById('tabs').appendChild(tab);
 
                 let iframe = document.createElement('iframe');
-                iframe.id = tools[tool].frame;
-                iframe.src = tools[tool].link;
+                iframe.id = allTools[tool].frame;
+                iframe.src = allTools[tool].link;
                 iframe.frameBorder = '0';
                 iframe.className = 'iframe';
                 document.getElementById('tab-content').appendChild(iframe);
@@ -114,9 +114,9 @@ function createCloseHandler(tab, iframe) {
                 createHandler(tool, allTools)();
             }
         });
-        if (tool in tools) {
+        if (tool in fetchedTools.tools) {
             dropdownToolbox.appendChild(link);
-        } else if (tool in enumPoCs) {
+        } else if (tool in fetchedTools.pocs) {
             dropdownPoC.appendChild(link);
         } else {
             dropdownMisc.appendChild(link);

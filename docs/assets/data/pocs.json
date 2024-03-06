@@ -1,3 +1,8 @@
 {
-    
+    "csrf": {
+        "name": "CSRF",
+        "id": "csrf-link",
+        "frame": "csrf-frame",
+        "link": "https://machadootto.github.io/CSRF-Helper/"
+    }
 }
