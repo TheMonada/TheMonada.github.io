@@ -1,0 +1,20 @@
+{
+    "gtfobins": {
+        "name": "GTFOBins",
+        "id": "gtfobins-link",
+        "frame": "gtfobins-frame",
+        "link": "https://gtfobins.github.io/"
+    },
+    "lolbas": {
+        "name": "LOLBAS",
+        "id": "lolbas-link",
+        "frame": "lolbas-frame",
+        "link": "https://lolbas-project.github.io/"
+    },
+    "wadcoms": {
+        "name": "WADComs",
+        "id": "wadcoms-link",
+        "frame": "wadcoms-frame",
+        "link": "https://wadcoms.github.io/"
+    }
+}

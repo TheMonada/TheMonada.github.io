@@ -130,6 +130,7 @@
     display: block;
     z-index: 1;
     overflow: auto;
+    background-color: #f2f2f2;
 }
 
 #tab-container {

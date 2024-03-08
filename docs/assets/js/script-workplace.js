@@ -3,9 +3,11 @@ async function fetchTools() {
     const tools = await response.json();
     response = await fetch('assets/data/pocs.json');
     const pocs = await response.json();
+    response = await fetch('assets/data/wordlists.json');
+    const wordlists = await response.json();
     response = await fetch('assets/data/misc.json');
     const misc = await response.json();
-    return { tools, pocs, misc };
+    return { tools, pocs, wordlists, misc };
 }
 
 function createHandler(tool, allTools) {
@@ -28,7 +30,7 @@ function createCloseHandler(tab, iframe) {
 (async function() {
     const fetchedTools = await fetchTools();
 
-    const allTools = Object.assign({}, fetchedTools.tools, fetchedTools.pocs, fetchedTools.misc);
+    const allTools = Object.assign({}, fetchedTools.tools, fetchedTools.pocs, fetchedTools.wordlists, fetchedTools.misc);
 
     const buttonToolbox = document.getElementById('toolbox-button');
     const arrowToolbox = document.getElementById('toolbox-arrow');
@@ -38,6 +40,10 @@ function createCloseHandler(tab, iframe) {
     const arrowPoC = document.getElementById('pocs-arrow');
     const dropdownPoC = document.getElementById('pocs-dropdown');
 
+    const buttonWordlists = document.getElementById('wordlists-button');
+    const arrowWordlists = document.getElementById('wordlists-arrow');
+    const dropdownWordlists = document.getElementById('wordlists-dropdown');
+
     const buttonMisc = document.getElementById('misc-button');
     const arrowMisc = document.getElementById('misc-arrow');
     const dropdownMisc = document.getElementById('misc-dropdown');
@@ -46,9 +52,11 @@ function createCloseHandler(tab, iframe) {
         if (!document.getElementById('sidebar').classList.contains('collapsed')) {
             dropdownToolbox.style.display = (dropdownToolbox.style.display === 'none') ? 'block' : 'none';
             dropdownPoC.style.display = 'none';
+            dropdownWordlists.style.display = 'none';
             dropdownMisc.style.display = 'none';
             arrowToolbox.className = (arrowToolbox.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
             arrowPoC.className = 'fa-solid fa-chevron-right';
+            arrowWordlists.className = 'fa-solid fa-chevron-right';
             arrowMisc.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
@@ -59,9 +67,26 @@ function createCloseHandler(tab, iframe) {
         if (!document.getElementById('sidebar').classList.contains('collapsed')) {
             dropdownPoC.style.display = (dropdownPoC.style.display === 'none') ? 'block' : 'none';
             dropdownToolbox.style.display = 'none';
+            dropdownWordlists.style.display = 'none';
             dropdownMisc.style.display = 'none';
             arrowPoC.className = (arrowPoC.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
             arrowToolbox.className = 'fa-solid fa-chevron-right';
+            arrowWordlists.className = 'fa-solid fa-chevron-right';
+            arrowMisc.className = 'fa-solid fa-chevron-right';
+        } else {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+    });
+
+    buttonWordlists.addEventListener('click', function () {
+        if (!document.getElementById('sidebar').classList.contains('collapsed')) {
+            dropdownWordlists.style.display = (dropdownWordlists.style.display === 'none') ? 'block' : 'none';
+            dropdownToolbox.style.display = 'none';
+            dropdownPoC.style.display = 'none';
+            dropdownMisc.style.display = 'none';
+            arrowWordlists.className = (arrowWordlists.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
+            arrowToolbox.className = 'fa-solid fa-chevron-right';
+            arrowPoC.className = 'fa-solid fa-chevron-right';
             arrowMisc.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
@@ -73,9 +98,11 @@ function createCloseHandler(tab, iframe) {
             dropdownMisc.style.display = (dropdownMisc.style.display === 'none') ? 'block' : 'none';
             dropdownToolbox.style.display = 'none';
             dropdownPoC.style.display = 'none';
+            dropdownWordlists.style.display = 'none';
             arrowMisc.className = (arrowMisc.className === 'fa-solid fa-chevron-right') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right';
             arrowToolbox.className = 'fa-solid fa-chevron-right';
             arrowPoC.className = 'fa-solid fa-chevron-right';
+            arrowWordlists.className = 'fa-solid fa-chevron-right';
         } else {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }
@@ -118,6 +145,8 @@ function createCloseHandler(tab, iframe) {
             dropdownToolbox.appendChild(link);
         } else if (tool in fetchedTools.pocs) {
             dropdownPoC.appendChild(link);
+        } else if (tool in fetchedTools.wordlists) {
+            dropdownWordlists.appendChild(link);
         } else {
             dropdownMisc.appendChild(link);
         }
@@ -133,9 +162,11 @@ function createCloseHandler(tab, iframe) {
     document.getElementById('collapse-button').addEventListener('click', function() {
         dropdownToolbox.style.display = 'none';
         dropdownPoC.style.display = 'none';
+        dropdownWordlists.style.display = 'none';
         dropdownMisc.style.display = 'none';
         arrowToolbox.className = 'fa-solid fa-chevron-right';
         arrowPoC.className = 'fa-solid fa-chevron-right';
+        arrowWordlists.className = 'fa-solid fa-chevron-right';
         arrowMisc.className = 'fa-solid fa-chevron-right';
         document.getElementById('sidebar').classList.toggle('collapsed');
     });
