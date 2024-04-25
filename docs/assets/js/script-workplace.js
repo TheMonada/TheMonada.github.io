@@ -196,4 +196,19 @@ function createCloseHandler(tab, iframe) {
             console.error("Error: " + err);
         }
     });
+
+    document.getElementById('toggle-spotify').addEventListener('click', function() {
+        const iframe = document.getElementById('spotify-iframe');
+        if (iframe.style.display === 'none') {
+            iframe.style.display = 'block';
+            iframe.style.transition = 'opacity 1s';
+            iframe.style.opacity = 1;
+        } else {
+            iframe.style.transition = 'opacity 1s';
+            iframe.style.opacity = 0;
+            setTimeout(function() {
+                iframe.style.display = 'none';
+            }, 1000);
+        }
+    });
 })();

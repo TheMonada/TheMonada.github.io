@@ -173,3 +173,18 @@
     flex-grow: 1;
     overflow: auto;
 }
+
+#spotify-iframe {
+    position: fixed;
+    right: 20px;
+    bottom: 35px;
+    z-index: 1000;
+}
+
+#toggle-spotify {
+    position: absolute;
+    right: 45px;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+}
