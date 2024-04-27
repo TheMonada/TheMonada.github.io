@@ -188,3 +188,48 @@
     display: inline-block;
     cursor: pointer;
 }
+
+#floating-menu {
+    position: fixed;
+    bottom: 35px;
+    right: 45px;
+    width: "40%";
+    height: "152";
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#floating-menu h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14px;;
+}
+
+#floating-menu a {
+    font-size: 12px;
+    padding: 10px;
+    display: flex;
+    color: #f2f2f2;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#floating-menu a:hover {
+    background-color: #333;
+}
+
+#floating-menu a img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+
+#floating-menu a.disabled {
+    color: grey;
+    pointer-events: none;
+}

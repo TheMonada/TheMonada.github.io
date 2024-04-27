@@ -195,20 +195,67 @@ function createCloseHandler(tab, iframe) {
         } catch(err) {
             console.error("Error: " + err);
         }
-    });
+    });    
+
+    const linksSpotify = document.querySelectorAll('#floating-menu a');
+    const iframeSpotify = document.getElementById('spotify-iframe');
 
     document.getElementById('toggle-spotify').addEventListener('click', function() {
-        const iframe = document.getElementById('spotify-iframe');
-        if (iframe.style.display === 'none') {
-            iframe.style.display = 'block';
-            iframe.style.transition = 'opacity 1s';
-            iframe.style.opacity = 1;
+        if (iframeSpotify.style.display === 'none') {
+            const menu = document.getElementById('floating-menu');
+            menu.style.display = 'none';
+            iframeSpotify.style.display = 'block';
+            iframeSpotify.style.transition = 'opacity 1s';
+            iframeSpotify.style.opacity = 1;
         } else {
-            iframe.style.transition = 'opacity 1s';
-            iframe.style.opacity = 0;
+            iframeSpotify.style.transition = 'opacity 1s';
+            iframeSpotify.style.opacity = 0;
             setTimeout(function() {
-                iframe.style.display = 'none';
+                iframeSpotify.style.display = 'none';
             }, 1000);
         }
+    });
+
+    document.getElementById('toggle-spotify').addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        const menu = document.getElementById('floating-menu');
+        if (menu.style.display === 'none') {
+            iframeSpotify.style.transition = 'opacity 1s';
+            iframeSpotify.style.opacity = 0;
+            setTimeout(function() {
+                iframeSpotify.style.display = 'none';
+            }, 1000);
+            menu.style.display = 'block';
+            menu.style.transition = 'opacity 1s';
+            menu.style.opacity = 1;
+        } else {
+            menu.style.transition = 'opacity 1s';
+            menu.style.opacity = 0;
+            setTimeout(function() {
+                menu.style.display = 'none';
+            }, 1000);
+        }
+    });
+
+    linksSpotify.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('data-url');
+            iframeSpotify.src = url;
+
+            linksSpotify.forEach(otherLink => {
+                if (otherLink === this) {
+                    otherLink.classList.add('disabled');
+                } else {
+                    otherLink.classList.remove('disabled');
+                }
+            });
+
+            const menu = document.getElementById('floating-menu');
+            menu.style.display = 'none';
+            iframeSpotify.style.display = 'block';
+            iframeSpotify.style.transition = 'opacity 1s';
+            iframeSpotify.style.opacity = 1;
+        });
     });
 })();
