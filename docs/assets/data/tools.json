@@ -11,6 +11,12 @@
         "frame": "cyberchef-frame",
         "link": "https://gchq.github.io/CyberChef/#theme=dark"
     },
+    "graphql-voyager": {
+        "name": "GraphQL Voyager",
+        "id": "graphql-voyager-link",
+        "frame": "graphql-voyager-frame",
+        "link": "https://graphql-kit.com/graphql-voyager/"
+    },
     "virusTotal": {
         "name": "VirusTotal",
         "id": "virusTotal-link",
