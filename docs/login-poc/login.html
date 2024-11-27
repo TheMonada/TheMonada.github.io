@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POC Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        form {
+            margin: 20px auto;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <img src="image.png" alt="Header Image">
+
+    <form>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <div class="info">
+        <p><strong>Document Location:</strong> <span id="location"></span></p>
+        <p><strong>Document Cookies:</strong> <span id="cookies"></span></p>
+        <p><strong>Local Storage:</strong> <span id="localStorage"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('location').textContent = document.location.href;
+        document.getElementById('cookies').textContent = document.cookie || "No cookies available.";
+        document.getElementById('localStorage').textContent = JSON.stringify(localStorage, null, 2) || "No local storage data.";
+    </script>
+</body>
+</html>
