@@ -34,5 +34,11 @@
         "id": "webhook-link",
         "frame": "webhook-frame",
         "link": "https://webhook.site/"
+    },
+    "CSP Bypass": {
+        "name": "CSP Bypass",
+        "id": "csp-bypass-link",
+        "frame": "csp-bypass-frame",
+        "link": "https://cspbypass.com/"
     }
 }
